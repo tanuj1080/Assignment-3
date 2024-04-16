@@ -278,6 +278,13 @@ main {
     margin-bottom: 10px;
   }
   
-  .categories nav {
-    display: flex;
-    justify-
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust as needed */
+    gap: 10px; /* Add spacing between cards */
+  }
+  
+  .book-card {
+    /* Remove inline-block if used in Approach 1 */
+  }
+  

@@ -1,65 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse Books | The Literary Voyage</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Books | The Literary Voyage</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <h1 class="logo">The Literary Voyage</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="books.html">Browse Books</a></li>
+  <header class="header">
+    <h1 class="logo">The Literary Voyage</h1>
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="active"><a href="books.html">Browse Books</a></li>
+        <li><a href="trending.html">Trending</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+    <section class="hero">
+      <h2>Explore a World of Stories</h2>
+      <p>Discover captivating fiction, thought-provoking non-fiction, and hidden gems to fuel your literary journey. Browse by category or use the search bar to find your next favorite read.</p>
+      <form action="#">
+        <input type="text" placeholder="Search Books">
+        <button type="submit">Find Now</button>
+      </form>
+    </section>
+
+    <h2>Our Book Collection</h2>
+
+    <section class="categories">
+      <h3>Browse by Category</h3>
+      <nav class="categories-nav">
+        <ul>
+          <li><a href="#">Fiction</a>
+            <ul class="sub-categories">
+              <li><a href="#">Fantasy</a></li>
+              <li><a href="#">Mystery</a></li>
+              <li><a href="#">Romance</a></li>
+              <li><a href="#">Sci-Fi</a></li>
+              <li><a href="#">Historical Fiction</a></li>
             </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="hero">
-            <h2>Explore a World of Stories</h2>
-            <p>Discover captivating fiction, thought-provoking non-fiction, and hidden gems to fuel your literary journey.</p>
-            <form action="#">
-                <input type="text" placeholder="Search Books">
-                <button type="submit">Find Now</button>
-            </form>
-        </section>
-        <h2>Our Book Collection</h2>
-        <section class="categories">
-            <h3>Browse by Category</h3>
-            <nav>
-                <ul>
-                    <li><a href="#">Fiction</a></li>
-                    <li><a href="#">Non-Fiction</a></li>
-                    <li><a href="#">Mystery</a></li>
-                    <li><a href="#">Romance</a></li>
-                    <li><a href="#">Sci-Fi & Fantasy</a></li>
-                    <li><a href="#">Classics</a></li>
-                </ul>
-            </nav>
-        </section>
-        <section class="books">
-            <h2>Featured Books</h2>
-            <div class="grid-container">
-                <article class="book-card">
-                    <img src="images/book1.jpg" alt="Book 1 Cover">
-                    <h3>Book Title 1</h3>
-                    <p>By Author Name</p>
-                    <a href="book-details.html">Learn More</a>
-                </article>
-                <article class="book-card">
-                    <img src="images/book2.jpg" alt="Book 2 Cover">
-                    <h3>Book Title 2</h3>
-                    <p>By Author Name</p>
-                    <a href="book-details.html">Learn More</a>
-                </article>
-                </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 The Literary Voyage</p>
-    </footer>
+          </li>
+          <li><a href="#">Non-Fiction</a></li>
+          <li><a href="#">Classics</a></li>
+          <li><a href="#">Young Adult</a></li>
+          <li><a href="#">Biographies & Memoirs</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <section class="featured-books">
+      <h2>Featured Books</h2>
+      <div class="book-grid">
+        <article class="book-card">
+          <img src="images/book1.jpg" alt="Book 1 Cover">
+          <h3>The Lord of the Rings</h3>
+          <p>By J.R.R. Tolkien</p>
+          <a href="book-details.html">Learn More</a>
+        </article>
+        <article class="book-card">
+          <img src="images/book2.jpg" alt="Book 2 Cover">
+          <h3>Pride and Prejudice</h3>
+          <p>By Jane Austen</p>
+          <a href="book-details.html">Learn More</a>
+        </article>
+        <article class="book-card">
+          <img src="images/book3.jpg" alt="Book 3 Cover">
+          <h3>The Hitchhiker's Guide to the Galaxy</h3>
+          <p>By Douglas Adams</p>
+          <a href="book-details.html">Learn More</a>
+        </article>
+        <article class="book-card">
+          <img src="images/book4.jpg" alt="Book 4 Cover">
+          <p>A Brief History of Time</p>
+          <p>By Stephen Hawking</p>
+          <a href="book-details.html">Learn More</a>
+        </article>
+        </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2024 The Literary Voyage</p>
+  </footer>
 </body>
 </html>
