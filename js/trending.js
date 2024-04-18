@@ -29,7 +29,7 @@ const bookData = {
       pointHoverBorderColor: 'rgba(220, 220, 220, 1)', // White border on hover
     },
     {
-        label: 'Romance',
+        label: 'Manga',
         data: [8, 4, 9, 13],
         backgroundColor: 'rgba(255, 99, 132, 0.5)', // Light pink with transparency
         borderColor: 'rgba(255, 99, 132, 1)', // Pink border
