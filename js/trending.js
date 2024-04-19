@@ -40,17 +40,6 @@ const bookData = {
         pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
       },
       {
-        label: 'Non-Fiction',
-        data: [6, 2, 7, 10],
-        backgroundColor: 'rgba(75, 192, 192, 0.5)', // Light turquoise with transparency
-        borderColor: 'rgba(75, 192, 192, 1)', // Turquoise border
-        borderWidth: 1,
-        pointRadius: 5,
-        pointHitRadius: 10,
-        pointHoverBackgroundColor: 'rgba(75, 192, 192, 1)',
-        pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
-      },
-      {
         label: 'Science Fiction',
         data: [4, 7, 5, 8],
         backgroundColor: 'rgba(153, 102, 255, 0.5)', // Light purple with transparency
