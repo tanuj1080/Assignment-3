@@ -129,9 +129,8 @@ main {
   
   /* Our Team section styles (applies to about.html) */
   .team {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: flex; /* Arrange articles horizontally */
+    justify-content: space-between; /* Distribute extra space evenly (optional) */
     margin-top: 30px;
   }
   
