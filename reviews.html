@@ -1,3 +1,94 @@
-<html>
-    <p>this is reviews page</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Reviews | Bulls Bookstore</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">Bulls Bookstore</h1>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="books.html">Browse Books</a></li>
+                <li><a href="trending.html">Trending</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="hero">
+            <h2>Read and Share Reviews</h2>
+            <p>Explore book reviews by readers like you or add your own insights for others to discover.</p>
+            <form>
+                <select id="bookDropdown" onchange="filterReviews()">
+                    <option value="all">Select a book to filter reviews</option>
+                    <option value="The Lord of the Rings">The Lord of the Rings</option>
+                    <option value="Pride and Prejudice">Pride and Prejudice</option>
+                    <option value="The Hitchhiker's Guide to the Galaxy">The Hitchhiker's Guide to the Galaxy</option>
+                    <option value="A Brief History of Time">A Brief History of Time</option>
+                </select>
+            </form>
+        </section>
+
+        <section class="reviews-list">
+            <h3>Reviews</h3>
+            <div id="reviewsContainer">
+                <article class="review">
+                    <h4>The Lord of the Rings</h4>
+                    <p>"A timeless adventure! Absolutely captivating from start to finish." - John Doe</p>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </article>
+                <article class="review">
+                    <h4>Pride and Prejudice</h4>
+                    <p>"An intricate tale of love and society. Jane Austen's wit is unmatched." - Jane Smith</p>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </article>
+                <article class="review">
+                    <h4>The Hitchhiker's Guide to the Galaxy</h4>
+                    <p>"Hilariously absurd and delightfully witty. A must-read for any sci-fi fan." - Kyle Ray</p>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </article>
+                <!-- Add more dummy reviews as needed -->
+            </div>
+        </section>
+
+        <section class="add-review">
+            <h3>Add a Review</h3>
+            <form>
+                <label for="bookToReview">Choose a book:</label>
+                <select id="bookToReview">
+                    <option value="The Lord of the Rings">The Lord of the Rings</option>
+                    <option value="Pride and Prejudice">Pride and Prejudice</option>
+                    <option value="The Hitchhiker's Guide to the Galaxy">The Hitchhiker's Guide to the Galaxy</option>
+                    <option value="A Brief History of Time">A Brief History of Time</option>
+                </select>
+                <textarea placeholder="Write your review here..."></textarea>
+                <button type="submit">Submit Review</button>
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; Bulls Bookstore</p>
+    </footer>
+
+    <script>
+        function filterReviews() {
+            var selectedBook = document.getElementById("bookDropdown").value;
+            var reviews = document.querySelectorAll('.review');
+            reviews.forEach(review => {
+                if (review.querySelector('h4').textContent === selectedBook || selectedBook === "all") {
+                    review.style.display = 'block';
+                } else {
+                    review.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
 </html>
