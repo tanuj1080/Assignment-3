@@ -123,8 +123,8 @@ main {
   
   /* Our Team section styles (applies to about.html) */
   .team {
-    display: flex; /* Arrange articles horizontally */
-    justify-content: space-between; /* Distribute extra space evenly (optional) */
+    display: flex;
+    justify-content: space-between; 
     margin-top: 30px;
   }
   
@@ -139,9 +139,9 @@ main {
   }
   
   .team article img {
-    width: 100%;
-    height:  
+    width: 100%;  
   }
+
 
 .logo {
     float: left;
