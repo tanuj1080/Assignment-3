@@ -1,38 +1,109 @@
-// Code for trending books chart and handling dropdown selection
+document.addEventListener('DOMContentLoaded', function() {
+// Horizontal Bar Chart - Annual Sales Comparison
+const ctxHorizontalBar = document.getElementById('annualSalesChart').getContext('2d');
+const salesComparisonData = {
+    labels: ['2020', '2021', '2022', '2023'],
+    datasets: [{
+        label: 'Sales',
+        data: [120, 150, 180, 210],
+        backgroundColor: [
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(153, 102, 255, 0.5)'
+        ]
+    }]
+};
 
-const ctx = document.getElementById('trendingBooksChart').getContext('2d');
+new Chart(ctxHorizontalBar, {
+    type: 'bar',
+    data: salesComparisonData,
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y', // Changes the bar chart to horizontal
+        scales: {
+            x: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'right'
+            }
+        }
+    }
+});
 
-// Sample data for chart (replace with actual data fetching logic)
-const bookData = {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr'], // Months for this example
-  datasets: [
-    {
-      label: 'Fantasy',
-      data: [15, 12, 12, 18], // Replace with actual data for trending counts
-      backgroundColor: 'rgba(255, 159, 64, 0.5)', // Orange with transparency
-      borderColor: 'rgba(255, 159, 64, 1)', // Orange border
-      borderWidth: 1,
-      pointRadius: 5, // Set point size
-      pointHitRadius: 10, // Increase clickable area for points
-      pointHoverBackgroundColor: 'rgba(255, 159, 64, 1)', // Orange on hover
-      pointHoverBorderColor: 'rgba(220, 220, 220, 1)', // White border on hover
-    },
-    {
-      label: 'Mystery',
-      data: [10, 6, 8, 12], // Replace with actual data for trending counts
-      backgroundColor: 'rgba(54, 162, 235, 0.5)', // Light blue with transparency
-      borderColor: 'rgba(54, 162, 235, 1)', // Blue border
-      borderWidth: 1,
-      pointRadius: 5, // Set point size
-      pointHitRadius: 10, // Increase clickable area for points
-      pointHoverBackgroundColor: 'rgba(54, 162, 235, 1)', // Blue on hover
-      pointHoverBorderColor: 'rgba(220, 220, 220, 1)', // White border on hover
-    },
-    {
+    // Polar Area Chart - Monthly User Engagement
+const ctxPolarArea = document.getElementById('userEngagementChart').getContext('2d');
+const userEngagementData = {
+    labels: ['Commenting', 'Sharing', 'Rating', 'Browsing'],
+    datasets: [{
+        label: 'User Engagement',
+        data: [50, 75, 25, 100],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(255, 205, 86, 0.5)',
+            'rgba(201, 203, 207, 0.5)'
+        ],
+    }]
+};
+
+new Chart(ctxPolarArea, {
+    type: 'polarArea',
+    data: userEngagementData,
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scale: {
+            ticks: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'top'
+            }
+        }
+    }
+});
+
+  // Context for the trending books line chart
+  const ctxTrending = document.getElementById('trendingBooksChart').getContext('2d');
+  
+  // Sample data for the line chart
+  const bookData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr'], // Months for this example
+    datasets: [
+      {
+        label: 'Fantasy',
+        data: [15, 12, 12, 18],
+        backgroundColor: 'rgba(255, 159, 64, 0.5)',
+        borderColor: 'rgba(255, 159, 64, 1)',
+        borderWidth: 1,
+        pointRadius: 5,
+        pointHitRadius: 10,
+        pointHoverBackgroundColor: 'rgba(255, 159, 64, 1)',
+        pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
+      },
+      {
+        label: 'Mystery',
+        data: [10, 6, 8, 12],
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1,
+        pointRadius: 5,
+        pointHitRadius: 10,
+        pointHoverBackgroundColor: 'rgba(54, 162, 235, 1)',
+        pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
+      },
+      {
         label: 'Manga',
         data: [8, 4, 9, 13],
-        backgroundColor: 'rgba(255, 99, 132, 0.5)', // Light pink with transparency
-        borderColor: 'rgba(255, 99, 132, 1)', // Pink border
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
         pointRadius: 5,
         pointHitRadius: 10,
@@ -42,74 +113,140 @@ const bookData = {
       {
         label: 'Science Fiction',
         data: [4, 7, 5, 8],
-        backgroundColor: 'rgba(153, 102, 255, 0.5)', // Light purple with transparency
-        borderColor: 'rgba(153, 102, 255, 1)', // Purple border
+        backgroundColor: 'rgba(153, 102, 255, 0.5)',
+        borderColor: 'rgba(153, 102, 255, 1)',
         borderWidth: 1,
         pointRadius: 5,
         pointHitRadius: 10,
         pointHoverBackgroundColor: 'rgba(153, 102, 255, 1)',
         pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
       }
-  ],
-};
+    ],
+  };
 
-const categoryDropdown = document.getElementById('categoryDropdown');
-
-// Function to generate the chart based on selected category
-function updateChart(selectedCategory) {
-  let chartData = { labels: bookData.labels }; // Initialize with labels
-
-  // Handle both valid and invalid category selections
-  if (selectedCategory) {
-    const matchingDataset = bookData.datasets.find(dataset => dataset.label === selectedCategory);
-    if (matchingDataset) {
-      chartData.datasets = [matchingDataset]; // Include only the matching dataset
-    } else {
-      chartData.datasets = []; // No matching category found, display empty chart
-      console.warn(`Category "${selectedCategory}" not found in data.`); // Log warning
-    }
-  } else {
-    // No category selected, show all datasets
-    chartData.datasets = bookData.datasets.slice(); // Create a copy to avoid reference issue
-  }
-
-  new Chart(ctx, {
-    type: 'line', // Use line chart type for this example (can be changed)
-    data: chartData,
-    options: {
-      responsive: true, // Adjust chart based on screen size
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true, // Start y-axis at 0
-          },
-        }],
-      },
-      legend: { // Display legend for category labels
-        display: true,
-        labels: {
-          fontColor: 'black', // Set legend text color
+    new Chart(ctxTrending, {
+      type: 'line',
+      data: bookData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         },
-      },
-      // Chart customization options
-      aspectRatio: 2, // Set a wider aspect ratio for better readability
-      tooltips: { // Customize tooltips
-        enabled: true, // Enable tooltips
-        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Black background with transparency
-        bodyColor: 'white', // White text color
-        titleFontColor: '#6e707e', // Gray title text color
-        bodyFontSize: 14, // Set tooltip body font size
-        titleMarginBottom: 10, // Add space between title and body
-      },
-    },
+        legend: {
+          display: true,
+          labels: {
+            fontColor: 'black'
+          },
+        },
+        aspectRatio: 2,
+        tooltips: {
+          enabled: true,
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          bodyColor: 'white',
+          titleFontColor: '#6e707e',
+          bodyFontSize: 14,
+          titleMarginBottom: 10,
+        },
+      }
+    });
+  
+
+  // Bar Chart - Sales Chart
+  const ctxSales = document.getElementById('salesChart').getContext('2d');
+  const salesData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+    datasets: [{
+      label: 'Book Sales',
+      data: [200, 150, 300, 250],
+      backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)', 'rgba(75, 192, 192, 0.5)'],
+      borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+      borderWidth: 1
+    }]
+  };
+
+  new Chart(ctxSales, {
+    type: 'bar',
+    data: salesData,
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
   });
-}
 
-// Update chart on initial page load (show all categories initially)
-updateChart();
+  // Pie Chart - Genre Distribution
+  const ctxGenre = document.getElementById('genrePieChart').getContext('2d');
+  const genreData = {
+    labels: ['Fantasy', 'Mystery', 'Sci-Fi', 'Non-Fiction'],
+    datasets: [{
+      data: [300, 250, 100, 150],
+      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+    }]
+  };
 
-// Update chart on category selection change
-categoryDropdown.addEventListener('change', (event) => {
-  const selectedCategory = event.target.value;
-  updateChart(selectedCategory);
+  new Chart(ctxGenre, {
+    type: 'pie',
+    data: genreData,
+    options: {
+        responsive: true, // Ensures the chart resizes depending on the container size
+        maintainAspectRatio: false, // Makes sure the chart fits into container dimensions without preserving the aspect ratio
+        plugins: {
+            legend: {
+                position: 'top', // You can adjust the legend position if needed
+                labels: {
+                    padding: 20, // Adds padding around each label in the legend for better spacing
+                    color: 'black' // Ensures the text color of the legend is black (adjustable as needed)
+                }
+            },
+            tooltip: {
+                enabled: true,
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                bodyColor: 'white',
+                titleFontColor: '#6e707e',
+                bodyFontSize: 14,
+                titleMarginBottom: 10,
+            }
+        }
+    }
+  });
+
+  // Radar Chart - Reader Demographics
+  const ctxDemographics = document.getElementById('readerDemographics').getContext('2d');
+  const demographicsData = {
+    labels: ['Teens', 'Twenties', 'Thirties', 'Forties', 'Fifties+'],
+    datasets: [{
+      label: 'Reader Age Groups',
+      data: [65, 59, 90, 81, 56],
+      backgroundColor: 'rgba(179, 181, 198, 0.2)',
+      borderColor: 'rgba(179, 181, 198, 1)',
+      pointBackgroundColor: 'rgba(179, 181, 198, 1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(179, 181, 198, 1)'
+    }]
+  };
+
+  new Chart(ctxDemographics, {
+    type: 'radar',
+    data: demographicsData,
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        r: {
+          angleLines: {
+            display: false
+          },
+          suggestedMin: 50,
+          suggestedMax: 100
+        }
+      }
+    }
+  });
+  
 });
