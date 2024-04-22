@@ -346,3 +346,6 @@ th:nth-child(4), td:nth-child(4) {
   height: 100%;
 }
 
+.githistory{
+  margin-top: 10px;
+}
