@@ -256,6 +256,7 @@ align-items: flex-start;
 gap: 20px;
 }
 
+
 .chart-container {
 flex: 1 1 300px; /* grow, shrink, basis */
 max-width: 400px; /* Maximum width of each chart container */
@@ -270,4 +271,9 @@ border-radius: 8px;
 .chart {
 width: 100%;
 height: 100%;
+}
+
+.chart-container:hover {
+  transform: scale(1.08); /* Scale up the chart container */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Increase shadow for pop effect */
 }
